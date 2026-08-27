@@ -1,12 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import Image from "next/image";
-import {
-  Code2,
-  GraduationCap,
-  Download,
-} from "lucide-react";
+import { Code2, GraduationCap, Download } from "lucide-react";
 import { useState } from "react";
 import { Audiowide } from "next/font/google";
 
@@ -31,59 +26,38 @@ export default function About() {
     .split(/\s+/);
 
   return (
-    <section
-      id="about"
-      className="scroll-mt-24 px-6 py-32"
-    >
+    <section id="about" className="scroll-mt-24 px-6 py-32">
       <div className="mx-auto max-w-6xl">
-
-        {/* =================================================
-            MAIN SECTION
-        ================================================== */}
-
+        {/* SECTION */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.2 }}
+          viewport={{ amount: 0.2, once: false }}
           transition={{ duration: 0.7 }}
           onViewportEnter={() => {
             setAnimationKey((prev) => prev + 1);
           }}
         >
-
-          {/* =================================================
-              SECTION LABEL
-          ================================================== */}
-
+          {/* LABEL */}
           <p
             className={`${audiowide.className} text-sm uppercase tracking-[0.3em] text-cyan-400`}
           >
             01 — About Me
           </p>
 
-          {/* =================================================
-              TITLE
-          ================================================== */}
-
+          {/* TITLE */}
           <h2
             className={`${audiowide.className} mt-4 text-4xl leading-tight md:text-5xl`}
           >
             Hi, I'm{" "}
-            <span className="text-cyan-400">
-              Edsel M. Lorejo
-            </span>
+            <span className="text-cyan-400">Edsel M. Lorejo</span>
           </h2>
 
-          {/* =================================================
-              CONTENT
-          ================================================== */}
-
+          {/* CONTENT */}
           <div className="mt-16 grid items-center gap-16 md:grid-cols-[0.8fr_1.2fr]">
-
-            {/* =================================================
+            {/* ==============================
                 PROFILE IMAGE
-            ================================================== */}
-
+            =============================== */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -95,19 +69,17 @@ export default function About() {
               }}
               viewport={{
                 amount: 0.2,
+                once: false,
               }}
               transition={{
                 duration: 0.8,
               }}
               className="relative mx-auto w-full max-w-sm"
             >
-
               {/* GLOW */}
-
               <div className="absolute inset-0 -z-10 rounded-[40px] bg-cyan-400/10 blur-[70px]" />
 
               {/* ROTATING BORDER */}
-
               <motion.div
                 animate={{
                   rotate: 360,
@@ -121,27 +93,18 @@ export default function About() {
               />
 
               {/* PHOTO */}
-
               <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-white/10 bg-[#0b111d] shadow-2xl shadow-cyan-500/10">
-
-                <Image
-                  src="/profile-1.jfif"
+                <img
+                  src="/profile-1.jpg"
                   alt="Edsel M. Lorejo"
-                  fill
-                  sizes="(max-width: 768px) 90vw, 400px"
-                  className="object-cover transition duration-700 hover:scale-105"
+                  className="h-full w-full object-cover transition duration-700 hover:scale-105"
                 />
 
-                {/* SUBTLE OVERLAY */}
-
+                {/* OVERLAY */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#070b14]/50 via-transparent to-transparent" />
-
               </div>
 
-              {/* =================================================
-                  FLOATING CODE ICON
-              ================================================== */}
-
+              {/* FLOATING CODE ICON */}
               <motion.div
                 animate={{
                   y: [-8, 8, -8],
@@ -157,10 +120,7 @@ export default function About() {
                 <Code2 size={26} />
               </motion.div>
 
-              {/* =================================================
-                  FLOATING GRADUATION ICON
-              ================================================== */}
-
+              {/* FLOATING GRADUATION ICON */}
               <motion.div
                 animate={{
                   y: [8, -8, 8],
@@ -174,13 +134,11 @@ export default function About() {
               >
                 <GraduationCap size={26} />
               </motion.div>
-
             </motion.div>
 
-            {/* =================================================
+            {/* ==============================
                 TEXT CONTENT
-            ================================================== */}
-
+            =============================== */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -192,17 +150,14 @@ export default function About() {
               }}
               viewport={{
                 amount: 0.2,
+                once: false,
               }}
               transition={{
                 duration: 0.8,
                 delay: 0.1,
               }}
             >
-
-              {/* =================================================
-                  FALLING TEXT
-              ================================================== */}
-
+              {/* FALLING TEXT */}
               <motion.p
                 key={animationKey}
                 className="text-base leading-8 text-gray-200"
@@ -243,10 +198,7 @@ export default function About() {
                 ))}
               </motion.p>
 
-              {/* =================================================
-                  DOWNLOAD RESUME
-              ================================================== */}
-
+              {/* DOWNLOAD RESUME */}
               <motion.div
                 initial={{
                   opacity: 0,
@@ -258,6 +210,7 @@ export default function About() {
                 }}
                 viewport={{
                   amount: 0.2,
+                  once: false,
                 }}
                 transition={{
                   duration: 0.6,
@@ -265,32 +218,23 @@ export default function About() {
                 }}
                 className="mt-8"
               >
-
                 <a
                   href="/resume.pdf"
                   download="Edsel-Lorejo-Resume.pdf"
                   className={`${audiowide.className} group inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm transition duration-300 hover:border-cyan-400/50 hover:bg-cyan-400/5`}
                 >
-
                   <Download
                     size={18}
                     className="text-cyan-400 transition duration-300 group-hover:-translate-y-0.5"
                   />
 
                   Download Resume
-
                 </a>
-
               </motion.div>
 
-              {/* =================================================
-                  QUICK INFO
-              ================================================== */}
-
+              {/* QUICK INFO */}
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
-
                 {/* DEVELOPMENT */}
-
                 <motion.div
                   initial={{
                     opacity: 0,
@@ -302,6 +246,7 @@ export default function About() {
                   }}
                   viewport={{
                     amount: 0.2,
+                    once: false,
                   }}
                   transition={{
                     duration: 0.6,
@@ -309,11 +254,7 @@ export default function About() {
                   }}
                   className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition hover:border-cyan-400/20 hover:bg-white/[0.04]"
                 >
-
-                  <Code2
-                    size={22}
-                    className="text-cyan-400"
-                  />
+                  <Code2 size={22} className="text-cyan-400" />
 
                   <h3
                     className={`${audiowide.className} mt-3 text-sm text-white`}
@@ -322,14 +263,11 @@ export default function About() {
                   </h3>
 
                   <p className="mt-2 text-sm text-gray-500">
-                    Building modern and responsive web
-                    experiences.
+                    Building modern and responsive web experiences.
                   </p>
-
                 </motion.div>
 
                 {/* CONTINUOUS LEARNING */}
-
                 <motion.div
                   initial={{
                     opacity: 0,
@@ -341,6 +279,7 @@ export default function About() {
                   }}
                   viewport={{
                     amount: 0.2,
+                    once: false,
                   }}
                   transition={{
                     duration: 0.6,
@@ -348,7 +287,6 @@ export default function About() {
                   }}
                   className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition hover:border-violet-400/20 hover:bg-white/[0.04]"
                 >
-
                   <GraduationCap
                     size={22}
                     className="text-violet-400"
@@ -361,20 +299,13 @@ export default function About() {
                   </h3>
 
                   <p className="mt-2 text-sm text-gray-500">
-                    Always improving my skills and exploring
-                    new technologies.
+                    Always improving my skills and exploring new technologies.
                   </p>
-
                 </motion.div>
-
               </div>
-
             </motion.div>
-
           </div>
-
         </motion.div>
-
       </div>
     </section>
   );
