@@ -3,8 +3,6 @@
 import { motion } from "motion/react";
 import {
   ArrowDown,
-  Download,
-  Mail,
   Code2,
   Braces,
   Terminal,
@@ -13,40 +11,63 @@ import {
   Server,
 } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
-import Image from "next/image";
-import { useState } from "react";
+import { Audiowide } from "next/font/google";
+
+const audiowide = Audiowide({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const floatingItems = [
-  // LEFT SIDE
+  // LEFT
   { icon: Code2, x: "3%", y: "18%", delay: 0 },
-  { icon: Braces, x: "48%", y: "18%", delay: 1.5 },
+  { icon: Braces, x: "8%", y: "52%", delay: 1.5 },
   { icon: Terminal, x: "5%", y: "76%", delay: 2.5 },
 
-  // RIGHT SIDE
+  // RIGHT
   { icon: Database, x: "94%", y: "17%", delay: 1 },
   { icon: GitBranch, x: "95%", y: "44%", delay: 2 },
   { icon: Server, x: "91%", y: "75%", delay: 0.5 },
 ];
 
 export default function Hero() {
-  const [photo, setPhoto] = useState(1);
-
-  const currentPhoto =
-    photo === 1 ? "/profile-1.jfif" : "/profile-2.jfif";
-
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-24">
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#070b14] px-6 pt-24"
+    >
       {/* =====================================================
           BACKGROUND GLOW
       ====================================================== */}
 
-      <div className="pointer-events-none absolute left-1/2 top-1/3 -z-20 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[140px]" />
+      <motion.div
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.15, 0.3, 0.15],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="pointer-events-none absolute left-1/2 top-1/3 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[140px]"
+      />
 
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-20 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-violet-500/5 blur-[120px]" />
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.05, 0.15, 0.05],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[120px]"
+      />
 
       {/* =====================================================
-          FLOATING PROGRAMMER ICONS
-          These stay on the OUTER SIDES
+          FLOATING PROGRAMMING ICONS
       ====================================================== */}
 
       {floatingItems.map((item, index) => {
@@ -83,48 +104,102 @@ export default function Hero() {
 
       <div className="mx-auto grid w-full max-w-6xl items-center gap-16 md:grid-cols-[1.1fr_0.9fr]">
         {/* ===================================================
-            LEFT SIDE — INTRODUCTION
+            LEFT SIDE
         ==================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{
+            opacity: 0,
+            x: -50,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.15,
+            ease: "easeOut",
+          }}
           className="relative z-10"
         >
-          {/* Small greeting */}
+          {/* SMALL LABEL */}
 
-          <p className="mb-5 font-mono text-sm uppercase tracking-[0.3em] text-cyan-400">
-            Hello, I'm
-          </p>
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.6,
+              delay: 0.3,
+            }}
+            className={`${audiowide.className} mb-5 text-sm uppercase tracking-[0.3em] text-cyan-400`}
+          >
+            Ready to Innovate
+          </motion.p>
 
-          {/* NAME */}
+          {/* TITLE */}
 
-          <h1 className="text-5xl font-bold leading-tight tracking-tight sm:text-6xl md:text-7xl">
-            Edsel M.
+          <motion.h1
+            initial={{
+              opacity: 0,
+              y: 35,
+              rotateX: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              rotateX: 0,
+            }}
+            transition={{
+              duration: 0.9,
+              delay: 0.4,
+              ease: "easeOut",
+            }}
+            className={`${audiowide.className} text-5xl leading-tight tracking-tight sm:text-6xl md:text-7xl`}
+          >
+            Front End
+
             <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-              Lorejo
+              Developer
             </span>
-          </h1>
+          </motion.h1>
 
-          {/* =================================================
-              TYPING ANIMATION
-          ================================================== */}
+          {/* TYPING */}
 
-          <div className="mt-6 flex min-h-[40px] items-center text-xl font-medium text-gray-300 md:text-2xl">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.8,
+            }}
+            className="mt-6 flex min-h-[40px] items-center text-xl font-medium text-gray-300 md:text-2xl"
+          >
             <span className="mr-2 font-mono text-cyan-400">
               &gt;
             </span>
 
             <TypeAnimation
               sequence={[
-                "BSIT Graduate",
+                "I craft clean interfaces.",
                 2000,
-                "IT Professional",
+                "I turn ideas into websites.",
                 2000,
-                "Aspiring Web Developer",
+                "I create interactive experiences.",
                 2000,
-                "Problem Solver",
+                "I bring designs to life.",
                 2000,
               ]}
               wrapper="span"
@@ -135,26 +210,37 @@ export default function Hero() {
             <span className="ml-1 animate-pulse text-cyan-400">
               |
             </span>
-          </div>
+          </motion.div>
 
-          {/* DESCRIPTION */}
+          {/* BUTTON */}
 
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-400">
-            Fresh Bachelor of Science in Information Technology
-            graduate looking for opportunities to apply my skills,
-            gain experience, and contribute to a team.
-          </p>
-
-          {/* =================================================
-              BUTTONS
-          ================================================== */}
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            {/* View Projects */}
-
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 1.1,
+            }}
+            className="mt-10 flex flex-wrap gap-4"
+          >
             <a
               href="#projects"
-              className="group flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-semibold text-black transition hover:bg-cyan-300"
+              onClick={(event) => {
+                event.preventDefault();
+
+                document
+                  .getElementById("projects")
+                  ?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+              }}
+              className={`${audiowide.className} group flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3 text-sm text-black transition duration-300 hover:bg-cyan-300 hover:shadow-lg hover:shadow-cyan-400/20`}
             >
               View My Work
 
@@ -163,57 +249,48 @@ export default function Hero() {
                 className="transition duration-300 group-hover:translate-y-1"
               />
             </a>
-
-            {/* Download Resume */}
-
-            <a
-              href="/resume.pdf"
-              download="Edsel-Lorejo-Resume.pdf"
-              className="flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-semibold transition duration-300 hover:border-cyan-400/50 hover:bg-white/5"
-            >
-              <Download size={18} />
-
-              Download Resume
-            </a>
-          </div>
-
-          {/* =================================================
-              EMAIL
-          ================================================== */}
-
-          <a
-            href="mailto:lorejoedsel@gmail.com"
-            className="mt-8 inline-flex items-center gap-3 text-sm text-gray-500 transition hover:text-cyan-400"
-          >
-            <Mail size={18} />
-
-            lorejoedsel@gmail.com
-          </a>
+          </motion.div>
         </motion.div>
 
         {/* ===================================================
-            RIGHT SIDE — PROFILE PHOTO
+            RIGHT SIDE
         ==================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            scale: 0.8,
-            rotate: 3,
+            scale: 0.7,
+            rotateY: 20,
           }}
           animate={{
             opacity: 1,
             scale: 1,
-            rotate: 0,
+            rotateY: 0,
           }}
           transition={{
-            duration: 0.9,
-            delay: 0.2,
+            duration: 1.2,
+            delay: 0.25,
+            ease: "easeOut",
           }}
-          className="relative mx-auto w-full max-w-sm"
+          className="relative mx-auto flex h-[430px] w-full max-w-lg items-center justify-center"
         >
+          {/* MAIN GLOW */}
+
+          <motion.div
+            animate={{
+              scale: [1, 1.12, 1],
+              opacity: [0.25, 0.45, 0.25],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute h-72 w-72 rounded-full bg-cyan-400/20 blur-[100px]"
+          />
+
           {/* =================================================
-              OUTER ROTATING RING
+              OUTER ORBIT
           ================================================== */}
 
           <motion.div
@@ -221,15 +298,17 @@ export default function Hero() {
               rotate: 360,
             }}
             transition={{
-              duration: 30,
+              duration: 25,
               repeat: Infinity,
               ease: "linear",
             }}
-            className="pointer-events-none absolute -inset-6 rounded-[40px] border border-cyan-400/10"
-          />
+            className="absolute h-[330px] w-[330px] rounded-full border border-cyan-400/20"
+          >
+            <div className="absolute -right-2 top-1/2 h-4 w-4 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/60" />
+          </motion.div>
 
           {/* =================================================
-              SECOND ROTATING RING
+              SECOND ORBIT
           ================================================== */}
 
           <motion.div
@@ -237,83 +316,203 @@ export default function Hero() {
               rotate: -360,
             }}
             transition={{
-              duration: 45,
+              duration: 18,
               repeat: Infinity,
               ease: "linear",
             }}
-            className="pointer-events-none absolute -inset-12 rounded-[50px] border border-violet-400/5"
-          />
-
-          {/* =================================================
-              PHOTO CARD
-          ================================================== */}
-
-          <motion.button
-            onClick={() => setPhoto(photo === 1 ? 2 : 1)}
-            whileHover={{
-              scale: 1.03,
-              rotate: -1,
-            }}
-            whileTap={{
-              scale: 0.97,
-            }}
-            className="group relative aspect-[4/5] w-full overflow-hidden rounded-[32px] border border-white/10 bg-[#0b111d] shadow-2xl shadow-cyan-500/10"
+            className="absolute h-[270px] w-[400px] rotate-[25deg] rounded-full border border-violet-400/15"
           >
-            {/* PHOTO */}
-
-            <Image
-              src={currentPhoto}
-              alt="Edsel M. Lorejo"
-              fill
-              priority
-              sizes="(max-width: 768px) 90vw, 400px"
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
-
-            {/* DARK GRADIENT */}
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-
-            {/* =================================================
-                CLICK INDICATOR
-            ================================================== */}
-          </motion.button>
+            <div className="absolute -left-2 top-1/2 h-3 w-3 rounded-full bg-violet-400 shadow-lg shadow-violet-400/60" />
+          </motion.div>
 
           {/* =================================================
-              FLOATING LABEL — LEFT OF PHOTO
+              THIRD ORBIT
           ================================================== */}
 
           <motion.div
             animate={{
-              y: [-8, 8, -8],
+              rotate: 360,
+            }}
+            transition={{
+              duration: 35,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute h-[390px] w-[190px] rounded-full border border-blue-400/10"
+          />
+
+          {/* =================================================
+              CENTER SPHERE
+          ================================================== */}
+
+          <motion.div
+            animate={{
+              y: [-10, 10, -10],
+              rotate: [0, 2, -2, 0],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="relative flex h-52 w-52 items-center justify-center rounded-full border border-cyan-300/30 bg-[#07111f]/80 shadow-2xl shadow-cyan-500/20 backdrop-blur-xl"
+          >
+            {/* INNER GLOW */}
+
+            <div className="absolute inset-4 rounded-full bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-violet-500/20 blur-xl" />
+
+            {/* INNER CIRCLE */}
+
+            <motion.div
+              animate={{
+                rotate: -360,
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute inset-8 rounded-full border border-dashed border-cyan-400/20"
+            />
+
+            {/* CODE */}
+
+            <div className="relative text-center">
+              <motion.div
+                animate={{
+                  scale: [1, 1.08, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className={`${audiowide.className} text-6xl text-cyan-300`}
+              >
+                {"< />"}
+              </motion.div>
+
+              <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-gray-500">
+                Create · Build · Innovate
+              </p>
+            </div>
+          </motion.div>
+
+          {/* =================================================
+              REACT BADGE
+          ================================================== */}
+
+          <motion.div
+            animate={{
+              y: [-10, 10, -10],
+              x: [-3, 3, -3],
             }}
             transition={{
               duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute -left-8 top-16 hidden rounded-2xl border border-white/10 bg-[#0b111d]/90 px-4 py-3 font-mono text-xs text-cyan-400 shadow-xl backdrop-blur-xl sm:block"
+            className={`${audiowide.className} absolute left-6 top-16 rounded-2xl border border-cyan-400/20 bg-[#0b111d]/80 px-4 py-3 text-xs text-cyan-300 shadow-xl backdrop-blur-xl`}
           >
-            {"<developer />"}
+            <span className="text-cyan-400">●</span> React
           </motion.div>
 
           {/* =================================================
-              FLOATING LABEL — RIGHT OF PHOTO
+              NEXT.JS BADGE
           ================================================== */}
 
           <motion.div
             animate={{
-              y: [8, -8, 8],
+              y: [10, -10, 10],
+              x: [3, -3, 3],
             }}
             transition={{
               duration: 5,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute -right-8 bottom-20 hidden rounded-2xl border border-white/10 bg-[#0b111d]/90 px-4 py-3 font-mono text-xs text-violet-400 shadow-xl backdrop-blur-xl sm:block"
+            className={`${audiowide.className} absolute right-5 top-24 rounded-2xl border border-white/10 bg-[#0b111d]/80 px-4 py-3 text-xs text-gray-300 shadow-xl backdrop-blur-xl`}
           >
-            {"{ IT Graduate }"}
+            <span className="text-violet-400">◆</span> Next.js
           </motion.div>
+
+          {/* =================================================
+              TYPESCRIPT BADGE
+          ================================================== */}
+
+          <motion.div
+            animate={{
+              y: [-8, 8, -8],
+              rotate: [0, 3, -3, 0],
+            }}
+            transition={{
+              duration: 4.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className={`${audiowide.className} absolute bottom-20 left-10 rounded-2xl border border-blue-400/20 bg-[#0b111d]/80 px-4 py-3 text-xs text-blue-300 shadow-xl backdrop-blur-xl`}
+          >
+            <span className="text-blue-400">TS</span> TypeScript
+          </motion.div>
+
+          {/* =================================================
+              UI / UX BADGE
+          ================================================== */}
+
+          <motion.div
+            animate={{
+              y: [8, -8, 8],
+              rotate: [0, -3, 3, 0],
+            }}
+            transition={{
+              duration: 5.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className={`${audiowide.className} absolute bottom-14 right-8 rounded-2xl border border-violet-400/20 bg-[#0b111d]/80 px-4 py-3 text-xs text-violet-300 shadow-xl backdrop-blur-xl`}
+          >
+            <span className="text-violet-400">✦</span> UI / UX
+          </motion.div>
+
+          {/* =================================================
+              PARTICLES
+          ================================================== */}
+
+          <motion.span
+            animate={{
+              y: [-15, 15, -15],
+              opacity: [0.3, 1, 0.3],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+            }}
+            className="absolute left-1/4 top-5 h-2 w-2 rounded-full bg-cyan-400"
+          />
+
+          <motion.span
+            animate={{
+              y: [15, -15, 15],
+              opacity: [0.2, 0.9, 0.2],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+            }}
+            className="absolute bottom-5 right-1/4 h-2 w-2 rounded-full bg-violet-400"
+          />
+
+          <motion.span
+            animate={{
+              x: [-10, 10, -10],
+              opacity: [0.2, 1, 0.2],
+            }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+            }}
+            className="absolute right-16 top-1/2 h-1.5 w-1.5 rounded-full bg-blue-400"
+          />
         </motion.div>
       </div>
 
@@ -321,7 +520,7 @@ export default function Hero() {
           BOTTOM FADE
       ====================================================== */}
 
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#070b14] to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#070b14] to-transparent" />
     </section>
   );
 }

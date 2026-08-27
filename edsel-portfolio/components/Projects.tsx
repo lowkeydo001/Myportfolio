@@ -2,6 +2,12 @@
 
 import { motion } from "motion/react";
 import { ArrowUpRight, Database, HeartPulse } from "lucide-react";
+import { Audiowide } from "next/font/google";
+
+const audiowide = Audiowide({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const projects = [
   {
@@ -26,15 +32,45 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="scroll-mt-24 px-6 py-32">
+    <section
+      id="projects"
+      className="scroll-mt-24 px-6 py-32"
+    >
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-sm uppercase tracking-[0.3em] text-cyan-400">
-          03 — Projects
-        </p>
 
-        <h2 className="mt-4 text-4xl font-bold md:text-5xl">
-          Featured <span className="text-cyan-400">project.</span>
-        </h2>
+        {/* =====================================================
+            SECTION HEADER
+        ====================================================== */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* SECTION LABEL */}
+
+          <p
+            className={`${audiowide.className} text-sm uppercase tracking-[0.3em] text-cyan-400`}
+          >
+            03 — Projects
+          </p>
+
+          {/* SECTION TITLE */}
+
+          <h2
+            className={`${audiowide.className} mt-4 text-4xl leading-tight md:text-5xl`}
+          >
+            Featured{" "}
+            <span className="text-cyan-400">
+              project.
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* =====================================================
+            PROJECT LIST
+        ====================================================== */}
 
         <div className="mt-14 space-y-6">
           {projects.map((project, index) => {
@@ -43,50 +79,95 @@ export default function Projects() {
             return (
               <motion.article
                 key={project.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                whileHover={{ scale: 1.01 }}
+                initial={{
+                  opacity: 0,
+                  x: index % 2 === 0 ? -30 : 30,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.7,
+                }}
+                whileHover={{
+                  scale: 1.01,
+                }}
                 className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-8 md:p-12"
               >
-                <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-cyan-400/5 blur-3xl transition group-hover:bg-cyan-400/10" />
+
+                {/* =================================================
+                    BACKGROUND GLOW
+                ================================================== */}
+
+                <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-cyan-400/5 blur-3xl transition duration-500 group-hover:bg-cyan-400/10" />
+
+                {/* =================================================
+                    PROJECT CONTENT
+                ================================================== */}
 
                 <div className="relative grid gap-8 md:grid-cols-[100px_1fr_auto] md:items-start">
+
+                  {/* PROJECT NUMBER */}
+
                   <span className="font-mono text-sm text-gray-600">
                     {project.number}
                   </span>
 
+                  {/* MAIN INFORMATION */}
+
                   <div>
+
+                    {/* CATEGORY */}
+
                     <div className="mb-5 flex items-center gap-3">
-                      <Icon className="text-cyan-400" size={24} />
+                      <Icon
+                        className="text-cyan-400"
+                        size={24}
+                      />
 
                       <span className="text-sm text-cyan-400">
                         {project.category}
                       </span>
                     </div>
 
-                    <h3 className="text-2xl font-bold md:text-4xl">
+                    {/* PROJECT TITLE */}
+
+                    <h3
+                      className={`${audiowide.className} text-2xl leading-tight md:text-4xl`}
+                    >
                       {project.title}
                     </h3>
+
+                    {/* DESCRIPTION */}
 
                     <p className="mt-5 max-w-2xl leading-8 text-gray-400">
                       {project.description}
                     </p>
 
+                    {/* YEAR */}
+
                     <p className="mt-6 font-mono text-xs uppercase tracking-widest text-gray-600">
                       {project.year}
                     </p>
+
                   </div>
 
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 transition group-hover:border-cyan-400 group-hover:text-cyan-400">
+                  {/* ARROW */}
+
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 transition duration-300 group-hover:border-cyan-400 group-hover:text-cyan-400">
                     <ArrowUpRight size={20} />
                   </div>
+
                 </div>
               </motion.article>
             );
           })}
         </div>
+
       </div>
     </section>
   );

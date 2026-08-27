@@ -10,6 +10,12 @@ import {
 } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { useState } from "react";
+import { Audiowide } from "next/font/google";
+
+const audiowide = Audiowide({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const skillCategories = [
   {
@@ -34,13 +40,9 @@ const skillCategories = [
     name: "Back End",
     icon: Server,
     color: "violet",
-    description: "Developing server-side logic, APIs, and application systems.",
-    skills: [
-      "Laravel",
-      "Django",
-      "PHP",
-      "Python",
-    ],
+    description:
+      "Developing server-side logic, APIs, and application systems.",
+    skills: ["Laravel", "Django", "PHP", "Python"],
   },
   {
     id: "database",
@@ -48,11 +50,9 @@ const skillCategories = [
     name: "Databases",
     icon: Database,
     color: "emerald",
-    description: "Managing and working with structured application data.",
-    skills: [
-      "PostgreSQL",
-      "MySQL",
-    ],
+    description:
+      "Managing and working with structured application data.",
+    skills: ["PostgreSQL", "MySQL"],
   },
   {
     id: "tools",
@@ -60,14 +60,9 @@ const skillCategories = [
     name: "Tools & Workflow",
     icon: Wrench,
     color: "amber",
-    description: "Tools I use for development, collaboration, and design.",
-    skills: [
-      "GitHub",
-      "Git",
-      "VS Code",
-      "Vite",
-      "Figma",
-    ],
+    description:
+      "Tools I use for development, collaboration, and design.",
+    skills: ["GitHub", "Git", "VS Code", "Vite", "Figma"],
   },
 ];
 
@@ -95,11 +90,19 @@ export default function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-sm uppercase tracking-[0.3em] text-cyan-400">
+          {/* SECTION LABEL */}
+
+          <p
+            className={`${audiowide.className} text-sm uppercase tracking-[0.3em] text-cyan-400`}
+          >
             02 — Skills
           </p>
 
-          <h2 className="mt-4 text-4xl font-bold md:text-5xl">
+          {/* SECTION TITLE */}
+
+          <h2
+            className={`${audiowide.className} mt-4 text-4xl leading-tight md:text-5xl`}
+          >
             What I can{" "}
             <span className="text-cyan-400">
               <TypeAnimation
@@ -120,6 +123,8 @@ export default function Skills() {
               />
             </span>
           </h2>
+
+          {/* DESCRIPTION */}
 
           <p className="mt-5 max-w-2xl text-gray-500">
             Technologies and tools I use to build modern web applications.
@@ -170,6 +175,7 @@ export default function Skills() {
                       : "border-white/10 hover:border-cyan-400/20"
                   }`}
                 >
+
                   {/* =================================================
                       BACKGROUND GLOW
                   ================================================== */}
@@ -197,7 +203,9 @@ export default function Skills() {
                           {category.number}
                         </p>
 
-                        <h3 className="mt-1 text-xl font-bold text-white">
+                        <h3
+                          className={`${audiowide.className} mt-1 text-xl text-white`}
+                        >
                           {category.name}
                         </h3>
                       </div>
@@ -288,6 +296,7 @@ export default function Skills() {
                       </motion.div>
                     )}
                   </AnimatePresence>
+
                 </motion.button>
               </motion.div>
             );
