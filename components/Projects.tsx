@@ -57,7 +57,7 @@ const projects = [
       "Inertia.js",
       "PostgreSQL",
     ],
-    views: ["/mss.jfif"],
+    views: ["/mss.jpg"],
   },
 ];
 
