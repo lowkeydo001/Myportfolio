@@ -24,14 +24,15 @@ const skillCategories = [
     name: "Front End",
     icon: Code2,
     color: "cyan",
-    description: "Building responsive and interactive user interfaces.",
+    description:
+      "Building responsive, modern, and interactive user interfaces.",
     skills: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
       "HTML5",
       "CSS3",
-      "JavaScript",
-      "Tailwind CSS",
-      "Vue.js",
-      "Inertia.js",
     ],
   },
   {
@@ -41,8 +42,13 @@ const skillCategories = [
     icon: Server,
     color: "violet",
     description:
-      "Developing server-side logic, APIs, and application systems.",
-    skills: ["Laravel", "Django", "PHP", "Python"],
+      "Developing server-side applications, APIs, and system functionality.",
+    skills: [
+      "Laravel",
+      "Django",
+      "PHP",
+      "Python",
+    ],
   },
   {
     id: "database",
@@ -51,8 +57,11 @@ const skillCategories = [
     icon: Database,
     color: "emerald",
     description:
-      "Managing and working with structured application data.",
-    skills: ["PostgreSQL", "MySQL"],
+      "Designing, managing, and working with structured application data.",
+    skills: [
+      "PostgreSQL",
+      "MySQL",
+    ],
   },
   {
     id: "tools",
@@ -61,8 +70,15 @@ const skillCategories = [
     icon: Wrench,
     color: "amber",
     description:
-      "Tools I use for development, collaboration, and design.",
-    skills: ["GitHub", "Git", "VS Code", "Vite", "Figma"],
+      "Tools and libraries I use for development, version control, and deployment.",
+    skills: [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Vercel",
+      "Motion",
+      "Lucide React",
+    ],
   },
 ];
 
@@ -85,11 +101,22 @@ export default function Skills() {
         ====================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.6,
+          }}
         >
+
           {/* SECTION LABEL */}
 
           <p
@@ -127,8 +154,10 @@ export default function Skills() {
           {/* DESCRIPTION */}
 
           <p className="mt-5 max-w-2xl text-gray-500">
-            Technologies and tools I use to build modern web applications.
+            Technologies and tools I use to build modern web
+            applications and digital experiences.
           </p>
+
         </motion.div>
 
         {/* =====================================================
@@ -136,7 +165,9 @@ export default function Skills() {
         ====================================================== */}
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2">
+
           {skillCategories.map((category, index) => {
+
             const Icon = category.icon;
             const isOpen = open === category.id;
 
@@ -159,9 +190,12 @@ export default function Skills() {
                   delay: index * 0.08,
                 }}
               >
+
                 <motion.button
                   type="button"
-                  onClick={() => toggleCategory(category.id)}
+                  onClick={() =>
+                    toggleCategory(category.id)
+                  }
                   whileHover={{
                     y: -6,
                     scale: 1.01,
@@ -193,12 +227,16 @@ export default function Skills() {
                       {/* ICON */}
 
                       <div className="rounded-2xl border border-cyan-400/15 bg-cyan-400/5 p-3 text-cyan-400 transition duration-300 group-hover:scale-110 group-hover:border-cyan-400/30">
-                        <Icon size={27} strokeWidth={1.7} />
+                        <Icon
+                          size={27}
+                          strokeWidth={1.7}
+                        />
                       </div>
 
                       {/* TITLE */}
 
                       <div>
+
                         <p className="font-mono text-xs tracking-[0.25em] text-cyan-400/50">
                           {category.number}
                         </p>
@@ -208,6 +246,7 @@ export default function Skills() {
                         >
                           {category.name}
                         </h3>
+
                       </div>
 
                     </div>
@@ -241,6 +280,7 @@ export default function Skills() {
                   ================================================== */}
 
                   <AnimatePresence>
+
                     {isOpen && (
                       <motion.div
                         initial={{
@@ -261,46 +301,56 @@ export default function Skills() {
                         }}
                         className="relative overflow-hidden"
                       >
+
                         <div className="mt-6 border-t border-white/10 pt-6">
 
                           <div className="flex flex-wrap gap-3">
-                            {category.skills.map((skill, skillIndex) => (
-                              <motion.span
-                                key={skill}
-                                initial={{
-                                  opacity: 0,
-                                  y: 15,
-                                  scale: 0.9,
-                                }}
-                                animate={{
-                                  opacity: 1,
-                                  y: 0,
-                                  scale: 1,
-                                }}
-                                transition={{
-                                  delay: skillIndex * 0.07,
-                                  duration: 0.25,
-                                }}
-                                whileHover={{
-                                  y: -5,
-                                  scale: 1.05,
-                                }}
-                                className="cursor-default rounded-xl border border-cyan-400/15 bg-cyan-400/5 px-4 py-2 font-mono text-sm text-cyan-300 transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/10"
-                              >
-                                {skill}
-                              </motion.span>
-                            ))}
+
+                            {category.skills.map(
+                              (skill, skillIndex) => (
+                                <motion.span
+                                  key={skill}
+                                  initial={{
+                                    opacity: 0,
+                                    y: 15,
+                                    scale: 0.9,
+                                  }}
+                                  animate={{
+                                    opacity: 1,
+                                    y: 0,
+                                    scale: 1,
+                                  }}
+                                  transition={{
+                                    delay:
+                                      skillIndex * 0.07,
+                                    duration: 0.25,
+                                  }}
+                                  whileHover={{
+                                    y: -5,
+                                    scale: 1.05,
+                                  }}
+                                  className="cursor-default rounded-xl border border-cyan-400/15 bg-cyan-400/5 px-4 py-2 font-mono text-sm text-cyan-300 transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/10"
+                                >
+                                  {skill}
+                                </motion.span>
+                              )
+                            )}
+
                           </div>
 
                         </div>
+
                       </motion.div>
                     )}
+
                   </AnimatePresence>
 
                 </motion.button>
+
               </motion.div>
             );
           })}
+
         </div>
 
       </div>

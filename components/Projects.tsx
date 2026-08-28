@@ -12,7 +12,6 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Maximize2,
 } from "lucide-react";
 import { Audiowide } from "next/font/google";
 
@@ -42,7 +41,6 @@ const projects = [
         `/${String(index + 1).padStart(2, "0")}.png`
     ),
   },
-
   {
     number: "02",
     title: "MSS Patient Profiling Report System",
@@ -82,6 +80,28 @@ export default function Projects() {
     setCurrentView(0);
   };
 
+  const nextView = () => {
+    if (!activeProject) return;
+
+    setCurrentView(
+      (previous) =>
+        (previous + 1) %
+        activeProject.views.length
+    );
+  };
+
+  const previousView = () => {
+    if (!activeProject) return;
+
+    setCurrentView(
+      (previous) =>
+        (previous -
+          1 +
+          activeProject.views.length) %
+        activeProject.views.length
+    );
+  };
+
   useEffect(() => {
     if (selectedProject !== null) {
       document.body.style.overflow = "hidden";
@@ -94,40 +114,42 @@ export default function Projects() {
     };
   }, [selectedProject]);
 
-  const nextView = () => {
-    if (!activeProject) return;
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (selectedProject === null) return;
 
-    setCurrentView(
-      (previous) =>
-        (previous + 1) % activeProject.views.length
-    );
-  };
+      if (event.key === "Escape") {
+        closeProject();
+      }
 
-  const previousView = () => {
-    if (!activeProject) return;
+      if (event.key === "ArrowRight") {
+        nextView();
+      }
 
-    setCurrentView(
-      (previous) =>
-        (previous - 1 + activeProject.views.length) %
-        activeProject.views.length
-    );
-  };
+      if (event.key === "ArrowLeft") {
+        previousView();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
+    };
+  }, [selectedProject, activeProject]);
 
   return (
     <>
-      {/* ============================================================
-          PROJECTS SECTION
-      ============================================================ */}
-
       <section
         id="projects"
         className="scroll-mt-24 px-5 py-24 md:px-8 md:py-28"
       >
         <div className="mx-auto max-w-7xl">
 
-          {/* ========================================================
-              SECTION HEADER
-          ======================================================== */}
+          {/* SECTION HEADER */}
 
           <motion.div
             initial={{
@@ -166,12 +188,9 @@ export default function Projects() {
             </p>
           </motion.div>
 
-          {/* ========================================================
-              TWO PROJECTS SIDE BY SIDE
-          ======================================================== */}
+          {/* PROJECT CARDS */}
 
           <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
-
             {projects.map((project, index) => {
               const Icon = project.icon;
 
@@ -199,44 +218,34 @@ export default function Projects() {
                   className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-6 shadow-2xl md:p-7"
                 >
 
-                  {/* ==================================================
-                      BACKGROUND GLOW
-                  =================================================== */}
+                  {/* GLOW */}
 
                   <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-400/5 blur-[90px] transition duration-700 group-hover:bg-cyan-400/10" />
 
                   <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-blue-500/5 blur-[90px]" />
 
-                  {/* ==================================================
-                      PROJECT HEADER
-                  =================================================== */}
+                  {/* PROJECT INFO */}
 
-                  <div className="relative">
+                  <div className="relative flex-1">
 
-                    {/* NUMBER + CATEGORY */}
-
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-4">
 
                       <span className="font-mono text-xs text-gray-600">
                         {project.number}
                       </span>
 
-                      <div className="flex items-center gap-2">
-
+                      <div className="flex items-center gap-2 text-right">
                         <Icon
                           size={18}
-                          className="text-cyan-400"
+                          className="flex-shrink-0 text-cyan-400"
                         />
 
                         <span className="text-xs text-cyan-400">
                           {project.category}
                         </span>
-
                       </div>
 
                     </div>
-
-                    {/* TITLE */}
 
                     <h3
                       className={`${audiowide.className} mt-6 text-xl leading-tight md:text-2xl xl:text-3xl`}
@@ -244,16 +253,13 @@ export default function Projects() {
                       {project.title}
                     </h3>
 
-                    {/* DESCRIPTION */}
-
-                    <p className="mt-4 min-h-[72px] text-sm leading-6 text-gray-400">
+                    <p className="mt-4 text-sm leading-6 text-gray-400">
                       {project.description}
                     </p>
 
                     {/* TECHNOLOGIES */}
 
                     <div className="mt-5 flex flex-wrap gap-2">
-
                       {project.technologies.map(
                         (technology) => (
                           <span
@@ -264,76 +270,40 @@ export default function Projects() {
                           </span>
                         )
                       )}
-
                     </div>
 
-                  </div>
-
-                  {/* ==================================================
-                      IMAGE PREVIEW
-                  =================================================== */}
-
-                  <div className="relative mt-7">
+                    {/* VIEW PROJECT BUTTON */}
 
                     <button
                       type="button"
                       onClick={() => openProject(index)}
-                      className="group/preview relative block w-full overflow-hidden rounded-2xl border border-white/10 bg-[#02050a] transition duration-500 hover:border-cyan-400/40"
+                      className="mt-8 flex h-[180px] w-full items-center justify-center rounded-2xl border border-white/10 bg-[#02050a] transition duration-500 hover:border-cyan-400/40 hover:bg-cyan-400/[0.02] md:h-[200px]"
                     >
+                      <div className="text-center">
 
-                      {/* IMAGE CONTAINER */}
-
-                      <div className="relative flex h-[230px] w-full items-center justify-center overflow-hidden bg-[#02050a] md:h-[250px] xl:h-[270px]">
-
-                        <Image
-                          src={project.views[0]}
-                          alt={`${project.title} preview`}
-                          fill
-                          className="object-contain p-2 transition duration-700 group-hover/preview:scale-[1.025]"
-                          sizes="(max-width: 1024px) 100vw, 50vw"
-                        />
-
-                        {/* OVERLAY */}
-
-                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
-                        {/* CENTER PREVIEW ICON */}
-
-                        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-cyan-400/40 bg-black/60 text-cyan-400 opacity-0 shadow-xl backdrop-blur-md transition duration-300 group-hover/preview:opacity-100">
-                            <Maximize2 size={18} />
-                          </div>
-
+                        <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 transition duration-300 group-hover:scale-105">
+                          <Icon
+                            size={27}
+                            strokeWidth={1.5}
+                          />
                         </div>
 
-                        {/* BOTTOM INFO */}
+                        <p
+                          className={`${audiowide.className} text-xs uppercase tracking-[0.25em] text-cyan-400`}
+                        >
+                          View Project
+                        </p>
 
-                        <div className="absolute bottom-3 left-3">
-
-                          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-cyan-400">
-                            View project
-                          </p>
-
-                        </div>
-
-                        <div className="absolute bottom-3 right-3 rounded-full border border-white/10 bg-black/60 px-3 py-1 font-mono text-[9px] text-gray-300 backdrop-blur-md">
-                          {project.views.length === 1
-                            ? "01 VIEW"
-                            : `${String(
-                                project.views.length
-                              ).padStart(2, "0")} VIEWS`}
-                        </div>
+                        <p className="mt-2 text-xs text-gray-600">
+                          Click to explore screenshots
+                        </p>
 
                       </div>
-
                     </button>
 
                   </div>
 
-                  {/* ==================================================
-                      FOOTER
-                  =================================================== */}
+                  {/* FOOTER */}
 
                   <div className="relative mt-6 flex items-center justify-between">
 
@@ -344,7 +314,7 @@ export default function Projects() {
                     <button
                       type="button"
                       onClick={() => openProject(index)}
-                      className={`${audiowide.className} inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2.5 text-[10px] text-cyan-300 transition duration-300 hover:border-cyan-400 hover:bg-cyan-400/10`}
+                      className={`${audiowide.className} inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-[10px] text-cyan-300 transition duration-300 hover:border-cyan-400 hover:bg-cyan-400/10`}
                     >
                       VIEW
 
@@ -356,14 +326,11 @@ export default function Projects() {
                 </motion.article>
               );
             })}
-
           </div>
         </div>
       </section>
 
-      {/* ============================================================
-          FULLSCREEN IMAGE PREVIEW
-      ============================================================ */}
+      {/* PROJECT IMAGE VIEWER */}
 
       <AnimatePresence>
         {activeProject && (
@@ -377,13 +344,9 @@ export default function Projects() {
             exit={{
               opacity: 0,
             }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-xl md:p-8"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-3 backdrop-blur-xl sm:p-5 md:p-8"
             onClick={closeProject}
           >
-
-            {/* ======================================================
-                MODAL
-            ======================================================= */}
 
             <motion.div
               initial={{
@@ -407,23 +370,21 @@ export default function Projects() {
               onClick={(event) =>
                 event.stopPropagation()
               }
-              className="relative flex max-h-[94vh] w-full max-w-7xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#080c15] shadow-2xl"
+              className="relative flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#080c15] shadow-2xl"
             >
 
-              {/* ==================================================
-                  HEADER
-              =================================================== */}
+              {/* MODAL HEADER */}
 
-              <div className="flex flex-shrink-0 items-center justify-between border-b border-white/10 px-5 py-4 md:px-7">
+              <div className="flex flex-shrink-0 items-center justify-between border-b border-white/10 px-4 py-4 sm:px-6">
 
-                <div>
+                <div className="min-w-0 pr-4">
 
                   <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-cyan-400">
                     {activeProject.category}
                   </p>
 
                   <h3
-                    className={`${audiowide.className} mt-1 text-sm md:text-lg`}
+                    className={`${audiowide.className} mt-1 truncate text-sm sm:text-base md:text-lg`}
                   >
                     {activeProject.title}
                   </h3>
@@ -433,86 +394,78 @@ export default function Projects() {
                 <button
                   type="button"
                   onClick={closeProject}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray-400 transition hover:border-cyan-400 hover:text-cyan-400"
-                  aria-label="Close preview"
+                  className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white/10 text-gray-400 transition hover:border-cyan-400 hover:text-cyan-400"
+                  aria-label="Close"
                 >
                   <X size={19} />
                 </button>
 
               </div>
 
-              {/* ==================================================
-                  IMAGE
-              =================================================== */}
+              {/* MAIN IMAGE */}
 
-              <div className="relative min-h-0 flex-1 bg-[#02050a]">
+              <div className="relative flex h-[48vh] min-h-0 items-center justify-center bg-[#02050a] sm:h-[53vh] md:h-[56vh]">
 
-                <div className="relative h-[60vh] w-full md:h-[68vh]">
+                <AnimatePresence mode="wait">
 
-                  <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentView}
+                    initial={{
+                      opacity: 0,
+                      scale: 0.96,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.96,
+                    }}
+                    transition={{
+                      duration: 0.25,
+                    }}
+                    className="relative h-[88%] w-[88%]"
+                  >
+                    <Image
+                      src={
+                        activeProject.views[
+                          currentView
+                        ]
+                      }
+                      alt={`${activeProject.title} screenshot ${
+                        currentView + 1
+                      }`}
+                      fill
+                      className="object-contain"
+                      sizes="90vw"
+                      priority
+                    />
+                  </motion.div>
 
-                    <motion.div
-                      key={currentView}
-                      initial={{
-                        opacity: 0,
-                        scale: 0.98,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                      }}
-                      exit={{
-                        opacity: 0,
-                        scale: 0.98,
-                      }}
-                      transition={{
-                        duration: 0.25,
-                      }}
-                      className="absolute inset-0 flex items-center justify-center"
-                    >
+                </AnimatePresence>
 
-                      <Image
-                        src={
-                          activeProject.views[
-                            currentView
-                          ]
-                        }
-                        alt={`${activeProject.title} view ${
-                          currentView + 1
-                        }`}
-                        fill
-                        className="object-contain"
-                        sizes="100vw"
-                        priority
-                      />
-
-                    </motion.div>
-
-                  </AnimatePresence>
-
-                </div>
-
-                {/* PREVIOUS */}
+                {/* LEFT */}
 
                 {activeProject.views.length > 1 && (
                   <button
                     type="button"
                     onClick={previousView}
-                    className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-white backdrop-blur-md transition hover:border-cyan-400 hover:text-cyan-400"
-                    aria-label="Previous image"
+                    className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-white backdrop-blur-md transition hover:border-cyan-400 hover:text-cyan-400 sm:left-6 sm:h-11 sm:w-11"
+                    aria-label="Previous screenshot"
                   >
                     <ChevronLeft size={22} />
                   </button>
                 )}
 
-                {/* NEXT */}
+                {/* RIGHT */}
 
                 {activeProject.views.length > 1 && (
                   <button
                     type="button"
                     onClick={nextView}
-                    className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-white backdrop-blur-md transition hover:border-cyan-400 hover:text-cyan-400"
-                    aria-label="Next image"
+                    className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-white backdrop-blur-md transition hover:border-cyan-400 hover:text-cyan-400 sm:right-6 sm:h-11 sm:w-11"
+                    aria-label="Next screenshot"
                   >
                     <ChevronRight size={22} />
                   </button>
@@ -521,11 +474,10 @@ export default function Projects() {
                 {/* COUNTER */}
 
                 {activeProject.views.length > 1 && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-black/70 px-4 py-2 font-mono text-xs text-white backdrop-blur-md">
-                    {String(currentView + 1).padStart(
-                      2,
-                      "0"
-                    )}{" "}
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-black/70 px-3 py-1.5 font-mono text-[10px] text-white backdrop-blur-md">
+                    {String(
+                      currentView + 1
+                    ).padStart(2, "0")}{" "}
                     /{" "}
                     {String(
                       activeProject.views.length
@@ -535,14 +487,12 @@ export default function Projects() {
 
               </div>
 
-              {/* ==================================================
-                  THUMBNAILS - ONLY PUPIL PROJECT
-              =================================================== */}
+              {/* THUMBNAILS */}
 
               {activeProject.views.length > 1 && (
-                <div className="flex-shrink-0 border-t border-white/10 bg-[#070b13] px-4 py-3">
+                <div className="flex-shrink-0 border-t border-white/10 bg-[#070b13] px-3 py-3 sm:px-5">
 
-                  <div className="flex gap-2 overflow-x-auto pb-1">
+                  <div className="flex items-center gap-3 overflow-x-auto px-1 py-1">
 
                     {activeProject.views.map(
                       (image, index) => (
@@ -552,22 +502,29 @@ export default function Projects() {
                           onClick={() =>
                             setCurrentView(index)
                           }
-                          className={`relative h-14 w-24 flex-shrink-0 overflow-hidden rounded-lg border bg-[#03060c] transition ${
+                          className={`relative h-14 w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 bg-[#03060c] transition-all duration-300 sm:h-16 sm:w-24 ${
                             currentView === index
-                              ? "border-cyan-400"
-                              : "border-white/10 opacity-50 hover:opacity-100"
+                              ? "scale-110 border-cyan-400 opacity-100 shadow-lg shadow-cyan-400/20"
+                              : "border-white/10 opacity-40 hover:scale-105 hover:opacity-80"
+                          }`}
+                          aria-label={`Screenshot ${
+                            index + 1
                           }`}
                         >
 
                           <Image
                             src={image}
-                            alt={`Project view ${
+                            alt={`Screenshot ${
                               index + 1
                             }`}
                             fill
-                            className="object-contain"
+                            className="object-contain p-1"
                             sizes="96px"
                           />
+
+                          {currentView === index && (
+                            <div className="pointer-events-none absolute inset-0 border border-cyan-300/30" />
+                          )}
 
                         </button>
                       )
@@ -578,13 +535,9 @@ export default function Projects() {
                 </div>
               )}
 
-              {/* ==================================================
-                  FOOTER
-              =================================================== */}
+              {/* FOOTER */}
 
-              <div className="flex flex-shrink-0 flex-col gap-3 border-t border-white/10 bg-[#080c15] px-5 py-4 md:flex-row md:items-center md:justify-between md:px-7">
-
-                {/* TECHNOLOGIES */}
+              <div className="flex flex-shrink-0 flex-col gap-3 border-t border-white/10 bg-[#080c15] px-4 py-3 sm:px-6 md:flex-row md:items-center md:justify-between">
 
                 <div className="flex flex-wrap items-center gap-2">
 
@@ -592,7 +545,7 @@ export default function Projects() {
                     (technology) => (
                       <span
                         key={technology}
-                        className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] text-gray-400"
+                        className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[9px] text-gray-400"
                       >
                         {technology}
                       </span>
@@ -601,27 +554,25 @@ export default function Projects() {
 
                 </div>
 
-                {/* NAVIGATION */}
-
                 {activeProject.views.length > 1 && (
                   <div className="flex items-center gap-2">
 
                     <button
                       type="button"
                       onClick={previousView}
-                      className="flex h-9 items-center gap-2 rounded-full border border-white/10 px-4 text-[10px] text-gray-400 transition hover:border-cyan-400 hover:text-cyan-400"
+                      className="flex h-8 items-center gap-1.5 rounded-full border border-white/10 px-3 text-[9px] text-gray-400 transition hover:border-cyan-400 hover:text-cyan-400"
                     >
-                      <ArrowLeft size={14} />
+                      <ArrowLeft size={13} />
                       PREV
                     </button>
 
                     <button
                       type="button"
                       onClick={nextView}
-                      className="flex h-9 items-center gap-2 rounded-full border border-white/10 px-4 text-[10px] text-gray-400 transition hover:border-cyan-400 hover:text-cyan-400"
+                      className="flex h-8 items-center gap-1.5 rounded-full border border-white/10 px-3 text-[9px] text-gray-400 transition hover:border-cyan-400 hover:text-cyan-400"
                     >
                       NEXT
-                      <ArrowRight size={14} />
+                      <ArrowRight size={13} />
                     </button>
 
                   </div>

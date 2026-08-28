@@ -14,23 +14,230 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+html.light {
+  --background: #ffffff;
+  --foreground: #0f172a;
+}
+
+html.light body {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+/* =========================================================
+   HERO / INTRO STAYS DARK
+   ========================================================= */
+
+html.light #home {
+  background: #070b14 !important;
+  color: #ffffff !important;
+}
+
+/* Keep Hero dark text */
+
+html.light #home .text-white {
+  color: #ffffff !important;
+}
+
+html.light #home .text-gray-300 {
+  color: #d1d5db !important;
+}
+
+html.light #home .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* =========================================================
+   ALL OTHER SECTIONS = LIGHT
+   ========================================================= */
+
+html.light #about,
+html.light #skills,
+html.light #projects,
+html.light #education,
+html.light #contact {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* =========================================================
+   LIGHT MODE TEXT
+   ========================================================= */
+
+html.light #about .text-white,
+html.light #skills .text-white,
+html.light #projects .text-white,
+html.light #education .text-white,
+html.light #contact .text-white {
+  color: #0f172a !important;
+}
+
+html.light #about .text-gray-200,
+html.light #skills .text-gray-200,
+html.light #projects .text-gray-200,
+html.light #education .text-gray-200,
+html.light #contact .text-gray-200 {
+  color: #334155 !important;
+}
+
+html.light #about .text-gray-300,
+html.light #skills .text-gray-300,
+html.light #projects .text-gray-300,
+html.light #education .text-gray-300,
+html.light #contact .text-gray-300 {
+  color: #475569 !important;
+}
+
+html.light #about .text-gray-400,
+html.light #skills .text-gray-400,
+html.light #projects .text-gray-400,
+html.light #education .text-gray-400,
+html.light #contact .text-gray-400 {
+  color: #64748b !important;
+}
+
+html.light #about .text-gray-500,
+html.light #skills .text-gray-500,
+html.light #projects .text-gray-500,
+html.light #education .text-gray-500,
+html.light #contact .text-gray-500 {
+  color: #64748b !important;
+}
+
+html.light #about .text-gray-600,
+html.light #skills .text-gray-600,
+html.light #projects .text-gray-600,
+html.light #education .text-gray-600,
+html.light #contact .text-gray-600 {
+  color: #94a3b8 !important;
+}
+
+/* =========================================================
+   DARK CARDS -> WHITE CARDS
+   ========================================================= */
+
+html.light #about [class*="bg-[#0b111d]"],
+html.light #skills [class*="bg-[#0b111d]"],
+html.light #projects [class*="bg-[#0b111d]"],
+html.light #education [class*="bg-[#0b111d]"],
+html.light #contact [class*="bg-[#0b111d]"] {
+  background: #ffffff !important;
+}
+
+/* Other dark backgrounds */
+
+html.light #projects [class*="bg-[#080c15]"],
+html.light #projects [class*="bg-[#070b13]"],
+html.light #projects [class*="bg-[#02050a]"] {
+  background: #f8fafc !important;
+}
+
+/* =========================================================
+   WHITE TRANSPARENT CARDS
+   ========================================================= */
+
+html.light #about [class*="bg-white/[0.02]"],
+html.light #skills [class*="bg-white/[0.02]"],
+html.light #projects [class*="bg-white/[0.02]"],
+html.light #education [class*="bg-white/[0.03]"],
+html.light #contact [class*="bg-white/[0.02]"] {
+  background: #f8fafc !important;
+}
+
+/* =========================================================
+   BORDERS
+   ========================================================= */
+
+html.light #about [class*="border-white/10"],
+html.light #skills [class*="border-white/10"],
+html.light #projects [class*="border-white/10"],
+html.light #education [class*="border-white/10"],
+html.light #contact [class*="border-white/10"] {
+  border-color: #e2e8f0 !important;
+}
+
+html.light #about [class*="border-white/15"],
+html.light #skills [class*="border-white/15"],
+html.light #projects [class*="border-white/15"],
+html.light #education [class*="border-white/15"],
+html.light #contact [class*="border-white/15"] {
+  border-color: #cbd5e1 !important;
+}
+
+/* =========================================================
+   HOVER BACKGROUNDS
+   ========================================================= */
+
+html.light #about [class*="hover:bg-white"],
+html.light #skills [class*="hover:bg-white"],
+html.light #projects [class*="hover:bg-white"],
+html.light #education [class*="hover:bg-white"],
+html.light #contact [class*="hover:bg-white"] {
+  transition: all 0.3s ease;
+}
+
+/* =========================================================
+   NAVBAR LIGHT MODE
+   ========================================================= */
+
+html.light nav {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light nav .text-white {
+  color: #0f172a !important;
+}
+
+html.light nav .text-gray-400 {
+  color: #64748b !important;
+}
+
+html.light nav .text-gray-500 {
+  color: #64748b !important;
+}
+
+html.light nav a:hover {
+  color: #0f172a !important;
+}
+
+html.light nav button {
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
 
 ::selection {
   background: rgba(34, 211, 238, 0.3);
   color: white;
 }
 
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #070b14;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #64748b;
   border-radius: 999px;
 }
 

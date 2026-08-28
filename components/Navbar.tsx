@@ -62,10 +62,7 @@ export default function Navbar() {
     <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-[#070b14]/80 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
-        {/* =====================================================
-            LOGO
-        ====================================================== */}
-
+        {/* LOGO */}
         <div
           className={`${audiowide.className} select-none text-xl tracking-wide text-white`}
         >
@@ -73,10 +70,7 @@ export default function Navbar() {
           <span className="text-cyan-400">.</span>
         </div>
 
-        {/* =====================================================
-            DESKTOP NAV
-        ====================================================== */}
-
+        {/* DESKTOP NAV */}
         <div className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => {
             const sectionName = item.href.replace("#", "");
@@ -98,8 +92,6 @@ export default function Navbar() {
               >
                 {item.name}
 
-                {/* WHITE UNDERLINE */}
-
                 <span
                   className={`absolute -bottom-1 left-0 h-[2px] rounded-full bg-white transition-all duration-300 ${
                     isActive ? "w-full" : "w-0"
@@ -110,10 +102,7 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* =====================================================
-            MOBILE MENU BUTTON
-        ====================================================== */}
-
+        {/* MOBILE MENU BUTTON */}
         <button
           className={`${audiowide.className} rounded-lg border border-white/10 px-3 py-2 text-xs uppercase tracking-wider text-gray-400 transition hover:border-white/20 hover:text-white md:hidden`}
           onClick={() => {
@@ -128,10 +117,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* =====================================================
-          MOBILE NAV
-      ====================================================== */}
-
+      {/* MOBILE NAV */}
       <div
         id="mobile-menu"
         className="hidden border-t border-white/5 bg-[#070b14]/95 px-6 py-4 backdrop-blur-xl md:hidden"

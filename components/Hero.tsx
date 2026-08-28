@@ -103,6 +103,7 @@ export default function Hero() {
       ====================================================== */}
 
       <div className="mx-auto grid w-full max-w-6xl items-center gap-16 md:grid-cols-[1.1fr_0.9fr]">
+
         {/* ===================================================
             LEFT SIDE
         ==================================================== */}
@@ -289,9 +290,7 @@ export default function Hero() {
             className="absolute h-72 w-72 rounded-full bg-cyan-400/20 blur-[100px]"
           />
 
-          {/* =================================================
-              OUTER ORBIT
-          ================================================== */}
+          {/* OUTER ORBIT */}
 
           <motion.div
             animate={{
@@ -307,9 +306,7 @@ export default function Hero() {
             <div className="absolute -right-2 top-1/2 h-4 w-4 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/60" />
           </motion.div>
 
-          {/* =================================================
-              SECOND ORBIT
-          ================================================== */}
+          {/* SECOND ORBIT */}
 
           <motion.div
             animate={{
@@ -325,9 +322,7 @@ export default function Hero() {
             <div className="absolute -left-2 top-1/2 h-3 w-3 rounded-full bg-violet-400 shadow-lg shadow-violet-400/60" />
           </motion.div>
 
-          {/* =================================================
-              THIRD ORBIT
-          ================================================== */}
+          {/* THIRD ORBIT */}
 
           <motion.div
             animate={{
@@ -396,82 +391,6 @@ export default function Hero() {
                 Create · Build · Innovate
               </p>
             </div>
-          </motion.div>
-
-          {/* =================================================
-              REACT BADGE
-          ================================================== */}
-
-          <motion.div
-            animate={{
-              y: [-10, 10, -10],
-              x: [-3, 3, -3],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className={`${audiowide.className} absolute left-6 top-16 rounded-2xl border border-cyan-400/20 bg-[#0b111d]/80 px-4 py-3 text-xs text-cyan-300 shadow-xl backdrop-blur-xl`}
-          >
-            <span className="text-cyan-400">●</span> React
-          </motion.div>
-
-          {/* =================================================
-              NEXT.JS BADGE
-          ================================================== */}
-
-          <motion.div
-            animate={{
-              y: [10, -10, 10],
-              x: [3, -3, 3],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className={`${audiowide.className} absolute right-5 top-24 rounded-2xl border border-white/10 bg-[#0b111d]/80 px-4 py-3 text-xs text-gray-300 shadow-xl backdrop-blur-xl`}
-          >
-            <span className="text-violet-400">◆</span> Next.js
-          </motion.div>
-
-          {/* =================================================
-              TYPESCRIPT BADGE
-          ================================================== */}
-
-          <motion.div
-            animate={{
-              y: [-8, 8, -8],
-              rotate: [0, 3, -3, 0],
-            }}
-            transition={{
-              duration: 4.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className={`${audiowide.className} absolute bottom-20 left-10 rounded-2xl border border-blue-400/20 bg-[#0b111d]/80 px-4 py-3 text-xs text-blue-300 shadow-xl backdrop-blur-xl`}
-          >
-            <span className="text-blue-400">TS</span> TypeScript
-          </motion.div>
-
-          {/* =================================================
-              UI / UX BADGE
-          ================================================== */}
-
-          <motion.div
-            animate={{
-              y: [8, -8, 8],
-              rotate: [0, -3, 3, 0],
-            }}
-            transition={{
-              duration: 5.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className={`${audiowide.className} absolute bottom-14 right-8 rounded-2xl border border-violet-400/20 bg-[#0b111d]/80 px-4 py-3 text-xs text-violet-300 shadow-xl backdrop-blur-xl`}
-          >
-            <span className="text-violet-400">✦</span> UI / UX
           </motion.div>
 
           {/* =================================================

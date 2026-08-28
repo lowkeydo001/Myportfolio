@@ -49,8 +49,8 @@ export default function About() {
           <h2
             className={`${audiowide.className} mt-4 text-4xl leading-tight md:text-5xl`}
           >
-            Hi, I'm{" "}
-            <span className="text-cyan-400">Edsel M. Lorejo</span>
+            Edsel{" "}
+            <span className="text-cyan-400">Manaytay</span>
           </h2>
 
           {/* CONTENT */}

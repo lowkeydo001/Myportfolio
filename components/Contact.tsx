@@ -80,7 +80,7 @@ ${name}
         >
 
           {/* =====================================================
-              BACKGROUND GLOWS
+              BACKGROUND GLOW
           ====================================================== */}
 
           <motion.div
@@ -195,111 +195,13 @@ ${name}
             </motion.p>
 
             {/* =====================================================
-                CONTACT INFORMATION
-            ====================================================== */}
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-              {/* EMAIL */}
-
-              <a
-                href="mailto:lorejoedsel@gmail.com"
-                className="group rounded-2xl border border-white/10 bg-black/20 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-cyan-400/5"
-              >
-                <Mail
-                  size={22}
-                  className="text-cyan-400 transition duration-300 group-hover:scale-110"
-                />
-
-                <p
-                  className={`${audiowide.className} mt-4 text-xs uppercase tracking-wider text-gray-500`}
-                >
-                  Email
-                </p>
-
-                <p className="mt-2 break-all text-sm text-white">
-                  lorejoedsel@gmail.com
-                </p>
-              </a>
-
-              {/* PHONE */}
-
-              <a
-                href="tel:+639633735479"
-                className="group rounded-2xl border border-white/10 bg-black/20 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-cyan-400/5"
-              >
-                <Phone
-                  size={22}
-                  className="text-cyan-400 transition duration-300 group-hover:scale-110"
-                />
-
-                <p
-                  className={`${audiowide.className} mt-4 text-xs uppercase tracking-wider text-gray-500`}
-                >
-                  Phone
-                </p>
-
-                <p className="mt-2 text-sm text-white">
-                  +63 963 337 5479
-                </p>
-              </a>
-
-              {/* LINKEDIN */}
-
-              <a
-                href="https://www.linkedin.com/in/edsel-lorejo-2a14a3431"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group rounded-2xl border border-white/10 bg-black/20 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-cyan-400/5"
-              >
-                <span className="inline-flex text-cyan-400 transition duration-300 group-hover:scale-110">
-                  <FaLinkedinIn size={22} />
-                </span>
-
-                <p
-                  className={`${audiowide.className} mt-4 text-xs uppercase tracking-wider text-gray-500`}
-                >
-                  LinkedIn
-                </p>
-
-                <p className="mt-2 text-sm text-white">
-                  Connect with me
-                </p>
-              </a>
-
-              {/* LOCATION */}
-
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Iligan+City+Philippines"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group rounded-2xl border border-white/10 bg-black/20 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-cyan-400/5"
-              >
-                <MapPin
-                  size={22}
-                  className="text-cyan-400 transition duration-300 group-hover:scale-110"
-                />
-
-                <p
-                  className={`${audiowide.className} mt-4 text-xs uppercase tracking-wider text-gray-500`}
-                >
-                  Location
-                </p>
-
-                <p className="mt-2 text-sm text-white">
-                  Iligan City, Philippines
-                </p>
-              </a>
-            </div>
-
-            {/* =====================================================
                 MESSAGE AREA
             ====================================================== */}
 
             <div className="mt-14 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
 
               {/* =================================================
-                  LEFT MESSAGE
+                  LEFT SIDE
               ================================================== */}
 
               <motion.div
@@ -319,6 +221,7 @@ ${name}
                 }}
                 className="flex flex-col justify-center"
               >
+
                 <p
                   className={`${audiowide.className} text-sm uppercase tracking-[0.25em] text-cyan-400`}
                 >
@@ -340,9 +243,10 @@ ${name}
                   feel free to send me a message.
                 </p>
 
-                {/* SMALL STATUS */}
+                {/* STATUS */}
 
                 <div className="mt-8 flex items-center gap-3">
+
                   <span className="relative flex h-3 w-3">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
 
@@ -352,7 +256,9 @@ ${name}
                   <span className="font-mono text-xs uppercase tracking-widest text-gray-500">
                     Available for opportunities
                   </span>
+
                 </div>
+
               </motion.div>
 
               {/* =================================================
@@ -382,6 +288,7 @@ ${name}
                 {/* FORM TITLE */}
 
                 <div className="mb-7">
+
                   <p
                     className={`${audiowide.className} text-sm uppercase tracking-widest text-white`}
                   >
@@ -391,11 +298,13 @@ ${name}
                   <p className="mt-2 text-sm text-gray-500">
                     Fill out the form below to contact me.
                   </p>
+
                 </div>
 
                 {/* NAME */}
 
                 <div>
+
                   <label
                     htmlFor="name"
                     className="mb-2 block text-sm text-gray-400"
@@ -404,6 +313,7 @@ ${name}
                   </label>
 
                   <div className="relative">
+
                     <User
                       size={18}
                       className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-600"
@@ -420,12 +330,15 @@ ${name}
                       placeholder="Enter your name"
                       className="w-full rounded-xl border border-white/10 bg-[#070b14]/70 py-3.5 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-cyan-400/50 focus:bg-cyan-400/[0.02]"
                     />
+
                   </div>
+
                 </div>
 
                 {/* EMAIL */}
 
                 <div className="mt-5">
+
                   <label
                     htmlFor="email"
                     className="mb-2 block text-sm text-gray-400"
@@ -434,6 +347,7 @@ ${name}
                   </label>
 
                   <div className="relative">
+
                     <Mail
                       size={18}
                       className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-600"
@@ -450,12 +364,15 @@ ${name}
                       placeholder="you@example.com"
                       className="w-full rounded-xl border border-white/10 bg-[#070b14]/70 py-3.5 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-cyan-400/50 focus:bg-cyan-400/[0.02]"
                     />
+
                   </div>
+
                 </div>
 
                 {/* MESSAGE */}
 
                 <div className="mt-5">
+
                   <label
                     htmlFor="message"
                     className="mb-2 block text-sm text-gray-400"
@@ -474,6 +391,7 @@ ${name}
                     placeholder="Tell me about your project or opportunity..."
                     className="w-full resize-none rounded-xl border border-white/10 bg-[#070b14]/70 px-4 py-3.5 text-sm leading-6 text-white outline-none transition placeholder:text-gray-600 focus:border-cyan-400/50 focus:bg-cyan-400/[0.02]"
                   />
+
                 </div>
 
                 {/* SEND BUTTON */}
@@ -493,26 +411,99 @@ ${name}
                 <p className="mt-4 text-center text-xs text-gray-600">
                   Clicking send will open your email application.
                 </p>
+
               </motion.form>
+
             </div>
 
             {/* =====================================================
-                DIRECT EMAIL BUTTON
+                CONTACT ICONS
             ====================================================== */}
 
-            <div className="mt-10 flex justify-center">
-              <a
-                href="mailto:lorejoedsel@gmail.com"
-                className={`${audiowide.className} group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-7 py-3 text-sm uppercase tracking-wider text-white transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/5`}
-              >
-                Email Me Directly
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.7,
+                delay: 0.2,
+              }}
+              className="mt-14 flex items-center justify-center"
+            >
 
-                <ArrowUpRight
-                  size={18}
-                  className="text-cyan-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                />
-              </a>
-            </div>
+              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/20 px-5 py-4 backdrop-blur-xl">
+
+                {/* GMAIL */}
+
+                <a
+                  href="mailto:lorejoedsel@gmail.com"
+                  aria-label="Email Edsel"
+                  title="Email"
+                  className="group flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-gray-400 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-cyan-400"
+                >
+                  <Mail
+                    size={21}
+                    className="transition duration-300 group-hover:scale-110"
+                  />
+                </a>
+
+                {/* PHONE */}
+
+                <a
+                  href="tel:+639633735479"
+                  aria-label="Call Edsel"
+                  title="Phone"
+                  className="group flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-gray-400 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-cyan-400"
+                >
+                  <Phone
+                    size={21}
+                    className="transition duration-300 group-hover:scale-110"
+                  />
+                </a>
+
+                {/* LINKEDIN */}
+
+                <a
+                  href="https://www.linkedin.com/in/edsel-lorejo-2a14a3431"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Edsel's LinkedIn"
+                  title="LinkedIn"
+                  className="group flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-gray-400 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-cyan-400"
+                >
+                  <FaLinkedinIn
+                    size={20}
+                    className="transition duration-300 group-hover:scale-110"
+                  />
+                </a>
+
+                {/* LOCATION */}
+
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Iligan+City+Philippines"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Edsel's location"
+                  title="Location"
+                  className="group flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-gray-400 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-cyan-400"
+                >
+                  <MapPin
+                    size={21}
+                    className="transition duration-300 group-hover:scale-110"
+                  />
+                </a>
+
+              </div>
+
+            </motion.div>
 
           </div>
         </motion.div>
