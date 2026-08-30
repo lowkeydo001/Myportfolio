@@ -14,13 +14,8 @@ export default function About() {
   const [animationKey, setAnimationKey] = useState(0);
 
   const aboutText = `
-    I am a fresh Bachelor of Science in Information Technology graduate
-    from Mindanao State University at Naawan. I am currently looking
-    for an entry-level opportunity where I can apply my technical and
-    organizational skills while continuing to learn and grow professionally.
-    I am hardworking, reliable, willing to learn, and able to work well
-    with a team. My experience includes software development, data encoding,
-    file management, documentation, and assisting with organizational workflows.
+    I am a Bachelor of Science in Information Technology graduate from Mindanao State University at Naawan, with experience in software development, data encoding, file management, documentation, and administrative support. I am skilled in applying technical and organizational skills to support projects and day-to-day workflows. I am hardworking, reliable, detail-oriented, adaptable, and able to work independently or as part of a team while continuously developing my professional skills.
+
   `
     .trim()
     .split(/\s+/);
